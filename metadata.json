@@ -1,0 +1,7 @@
+{
+  "name": "Bharat Financial Exchange (BFX)",
+  "description": "Institutional-grade financial portal and stock exchange platform for Indian capital markets featuring real-time market data, indices, derivatives, option chains, IPO tracking, and corporate filings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
