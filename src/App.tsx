@@ -23,6 +23,7 @@ import { InvestorsView } from './views/InvestorsView';
 import { AboutView } from './views/AboutView';
 import { ContactView } from './views/ContactView';
 import { CompaniesView } from './views/CompaniesView';
+import { Result2026View } from './views/Result2026View';
 import { MutualFundsView } from './views/MutualFundsView';
 
 export default function App() {
@@ -98,6 +99,10 @@ export default function App() {
       <main className="flex-1">
         {currentTab === 'home' && (
           <HomeView onNavigate={handleNavigate} />
+        )}
+
+        {currentTab === 'result-2026' && (
+          <Result2026View />
         )}
 
         {currentTab === 'stocks' && (

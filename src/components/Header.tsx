@@ -11,7 +11,8 @@ import {
   TrendingUp,
   FileText,
   ShieldAlert,
-  ArrowRight
+  ArrowRight,
+  BookOpen
 } from 'lucide-react';
 import { STOCKS_DATA, MAJOR_INDICES } from '../data/mockMarketData';
 
@@ -85,6 +86,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenSe
 
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'result-2026', label: 'Result 2026 📖' },
     { id: 'markets', label: 'Markets' },
     { id: 'stocks', label: 'Stocks' },
     { id: 'indices', label: 'Indices' },
@@ -360,6 +362,15 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenSe
 
         {/* Right CTA / Quick Tools */}
         <div className="flex items-center gap-2.5">
+          <button
+            onClick={() => onNavigate('result-2026')}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-amber-950 bg-amber-400 hover:bg-amber-300 rounded-lg transition-colors shadow-xs cursor-pointer"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Result 2026</span>
+            <span className="sm:hidden">Result</span>
+          </button>
+
           <button
             onClick={() => onNavigate('market-data')}
             className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#002b5b] bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors border border-slate-200"

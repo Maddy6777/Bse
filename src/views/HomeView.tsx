@@ -7,6 +7,7 @@ import {
   MOCK_NEWS 
 } from '../data/mockMarketData';
 import { StockChart } from '../components/StockChart';
+import { DocumentPdfViewer } from '../components/DocumentPdfViewer';
 import { MarketIndex, Stock } from '../types/market';
 import { 
   TrendingUp, 
@@ -195,7 +196,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 2. MARKET DASHBOARD: GAINERS, LOSERS, ACTIVE, 52W */}
+      {/* 2. OFFICIAL PUBLICATION: HERE IS THE RESULT OF 2026 */}
+      <section id="result-2026-section">
+        <DocumentPdfViewer />
+      </section>
+
+      {/* 3. MARKET DASHBOARD: GAINERS, LOSERS, ACTIVE, 52W */}
       <section className="bg-white rounded-xl border border-slate-200 shadow-xs p-5 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
           <div>
