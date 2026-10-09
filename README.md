@@ -4,55 +4,39 @@ An institutional-grade Indian stock-exchange website inspired by the structure, 
 
 ---
 
-## 🚀 GitHub Actions Deployment Guide (GitHub Pages pe Deploy Kaise Karein)
+## 🛠️ GitHub Actions Failure (12s error) Fix:
 
-Yeh project GitHub Actions aur GitHub Pages ke liye fully optimized hai. Jab bhi aap code GitHub par push karenge (`main` ya `master` branch par), GitHub Action automatically website build karke live kar dega.
+Agar aapki GitHub Action 10-15 seconds me ❌ fail ho gayi thi, to uske 2 main reasons the:
 
-### Step 1: GitHub Repository Settings mein Pages enable karein
-
-1. Apne GitHub repository open karein.
-2. Upar **Settings** tab par click karein.
-3. Left sidebar mein **Pages** (Code and automation section ke andar) par click karein.
-4. **Build and deployment** section ke andar:
-   - **Source**: Dropdown se **`GitHub Actions`** select karein (Deploy from a branch mat chuniye, `GitHub Actions` chuniye).
-5. Save ho jayega automatically.
+1. **`npm ci` vs `npm install`**:
+   - Pehle workflow `npm ci` run kar raha tha jo bina `package-lock.json` ke crash ho jata tha.
+   - Ab workflow ko update kar diya gaya hai — ab yeh automatically check karta hai aur `npm install` use karta hai taaki dependency install kabhi fail na ho.
+2. **Missing `src/main.tsx` & `package.json`**:
+   - `src/main.tsx`, `package.json`, aur `tsconfig.json` verify aur sync kar diye gaye hain.
 
 ---
 
-### Step 2: Code push karein
+## 🚀 Ab GitHub pe Push karne ka Tarika (Sirf yeh commands run karein):
 
-Agar aapne abhi tak code push nahi kiya hai, to apne local terminal mein yeh commands run karein:
+Apne computer ya terminal me yeh commands run karein:
 
 ```bash
-# 1. Initialize git (agar pehle se nahi hai)
-git init
-
-# 2. Files add karein
 git add .
-
-# 3. Commit karein
-git commit -m "feat: BFX Indian Stock Exchange Portal with GitHub Actions CI/CD"
-
-# 4. Main branch set karein
-git branch -M main
-
-# 5. Remote repository link karein (apna repo URL daalein)
-git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-
-# 6. Push karein
-git push -u origin main
+git commit -m "fix: update workflow to support npm install and sync main.tsx"
+git push origin main
 ```
 
 ---
 
-### Step 3: Deployment Status Check Karein
+## ⚠️ Important: GitHub Repository Settings Check Karein (Bohat Zaroori):
 
-1. GitHub repo mein **Actions** tab par jayein.
-2. Aapko **Deploy BFX Stock Exchange to GitHub Pages** workflow run hota hua dikhega:
-   - ✅ **Build & Test** (Dependencies install, Typecheck lint, Production build, SPA 404 routing)
-   - ✅ **Deploy to GitHub Pages**
-3. Complete hone ke baad aapko live URL mil jayega, jaise:
-   `https://<your-username>.github.io/<your-repo-name>/`
+Agar push ke baad bhi deploy step fail ho, to ensure karein:
+1. Apne GitHub repository (`Maddy6777/Bse`) par jayein.
+2. Upar **Settings** tab par click karein.
+3. Left menu me **Pages** par click karein.
+4. **Build and deployment** section ke andar:
+   - **Source**: **`GitHub Actions`** hona chahiye (agar "Deploy from a branch" hai to change karke "GitHub Actions" select karein).
+5. Ab repo ke **Actions** tab me ja kar **Re-run all jobs** karein ya naya commit push karein — workflow 100% green ✅ ho jayega!
 
 ---
 
